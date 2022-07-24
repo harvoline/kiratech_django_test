@@ -9,3 +9,8 @@
 ### How to run test
 1. Run `python manage.py test api`
 2. Run `python manage.py test inventory`
+
+
+### admin credentials
+username : admin
+password : password123
