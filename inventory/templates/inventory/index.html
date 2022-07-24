@@ -1,0 +1,37 @@
+{% load static %}
+    <head>
+        <link rel="stylesheet" href="{% static 'css/app.css' %}" />
+    </head>
+{% if inventories %}
+    <div>
+        <h1>Inventories</h1>
+        <table id="inventory_list">
+            <thead>
+                <th>Name</th>
+                <th>Supplier Name</th>
+                <th>Availability</th>
+            </thead>
+            <tbody>
+                {% for inventory in inventories %}
+                    <tr>
+                        <td><a href="/inventory/{{ inventory.id }}/">{{ inventory.name }}</a></td>
+                        <td><a href="/inventory/{{ inventory.id }}/">{{ inventory.supplier_name }}</a></td>
+                        <td>
+                            <a href="/inventory/{{ inventory.id }}/">
+                                {% if inventory.availability %}
+                                    <span class="button blue">In stock</span>
+                                {% else %}
+                                    <span class="button red">Out of stock</span>
+                                {% endif %}
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div>
+        <p>No inventory are available.</p>
+    </div>
+{% endif %}

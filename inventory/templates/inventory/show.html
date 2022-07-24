@@ -1,0 +1,43 @@
+{% load static %}
+    <head>
+        <link rel="stylesheet" href="{% static 'css/app.css' %}" />
+    </head>
+{% if inventory %}
+    <div>
+        <h1>{{ inventory.name }}</h1>
+        <table>
+            <tbody>
+                <tr>
+                    <td colspan="3">
+                        <img src="{% static 'inventory/default-product-image.png' %}" alt="Coming Soon">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>Product Name:</div>
+                        <div>{{ inventory.name }}</div>
+                    </td>
+                    <td>
+                        <div>Supplier:</div>
+                        <div>{{ inventory.supplier_name }}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        {% if inventory.availability %}
+                            <span class="button blue stock">In stock</span>
+                        {% else %}
+                            <span class="button red stock">Out of stock</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div>
+        <p>Inventory not found!</p>
+    </div>
+{% endif %}
